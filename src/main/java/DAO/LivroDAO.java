@@ -1,6 +1,7 @@
 package DAO;
 
 import MODEL.Livro;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -8,7 +9,7 @@ import javax.persistence.Persistence;
 import java.util.List;
 
 public class LivroDAO {
-    private EntityManagerFactory emf;
+    private final EntityManagerFactory emf;
 
     public LivroDAO() {
         this.emf = Persistence.createEntityManagerFactory("aplicativo");
@@ -54,4 +55,29 @@ public class LivroDAO {
         }
     }
 
+    public void excluir(Livro livro) throws Exception {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Livro l = em.merge(livro);
+            em.remove(l);
+            em.getTransaction().commit();
+        }catch (Exception e){
+            em.getTransaction().rollback();
+            throw new Exception(e.getMessage());
+        }finally {
+            em.close();
+        }
+    }
+
+    public Livro buscarPorId(Livro livro){
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Livro.class, livro.getId());
+        } catch (Exception e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 }
