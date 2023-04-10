@@ -70,9 +70,11 @@ public class LivroDAO {
         }
     }
 
-    public Livro buscarPorId(Livro livro){
+    public Livro buscarPorId(Integer id){
         EntityManager em = emf.createEntityManager();
         try {
+            Livro livro = new Livro();
+            livro.setId(id);
             return em.find(Livro.class, livro.getId());
         } catch (Exception e) {
             return null;

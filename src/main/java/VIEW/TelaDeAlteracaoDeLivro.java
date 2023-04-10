@@ -19,7 +19,7 @@ public class TelaDeAlteracaoDeLivro {
         Integer pags = Integer.parseInt(scan.nextLine());
         System.out.println("Informe o novo ano de lançamento do livro: ");
         Integer ano  = Integer.parseInt(scan.nextLine());
-
+        scan.close();
         try{
             Livro livro = new Livro(id,nome,editora,pags,ano);
             new LivroDAO().alterar(livro);

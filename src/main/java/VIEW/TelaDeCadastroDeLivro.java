@@ -15,9 +15,9 @@ public class TelaDeCadastroDeLivro {
         System.out.println("Informe o nome da editora");
         String editora = scan.nextLine();
         System.out.println("Informe o número de páginas");
-        Integer pags = scan.nextInt();
+        Integer pags = Integer.parseInt(scan.nextLine());
         System.out.println("Informe o ano de lançamento");
-        Integer ano = scan.nextInt();
+        Integer ano = Integer.parseInt(scan.nextLine());
         scan.close();
 
         Livro livro = new Livro(null, nome, editora, pags, ano);
