@@ -82,4 +82,16 @@ public class LivroDAO {
             em.close();
         }
     }
+
+    public List<Livro> buscarPorNome(Livro livro){
+        EntityManager em = emf.createEntityManager();
+        try{
+            return em.createQuery("SELECT l FROM Livro l WHERE l.nome LIKE:nome", Livro.class)
+                    .setParameter("nome", "%"+livro.getNome()+"%").getResultList();
+        } catch (Exception e){
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 }

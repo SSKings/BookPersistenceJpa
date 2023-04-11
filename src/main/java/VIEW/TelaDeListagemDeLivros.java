@@ -15,11 +15,11 @@ public class TelaDeListagemDeLivros {
                 System.out.println("Nenhum livro cadastrado.");
             }
             for (Livro l : listaDeLivros){
-                System.out.println("ID:"+l.getId());
-                System.out.println("Nome:"+l.getNome());
-                System.out.println("Editora:"+l.getEditora());
-                System.out.println("Páginas:"+l.getPaginas());
-                System.out.println("Ano:"+l.getAno());
+                System.out.print("|ID: "+l.getId());
+                System.out.print(", Nome:"+l.getNome());
+                System.out.print(", Editora:"+l.getEditora());
+                System.out.print(", Páginas:"+l.getPaginas());
+                System.out.print(", Ano:"+l.getAno()+"|\n");
             }
         }catch (Exception e){
             System.out.println("Não foi possível listar...");
